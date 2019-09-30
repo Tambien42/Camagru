@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block validate %}
+<script type="text/javascript" src="/js/hideShowPassword.js"></script>
+<script type="text/javascript" src="/js/app.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#formSignup').validate({
+			rules: {
+				name: 'required',
+				email: {
+					required: true,
+					email: true,
+					remote: '/account/validate-email'
+				},
+				password:{
+					required: true,
+					minlength: 6,
+					validPassword: true
+				}
+			},
+			messages: {
+				email: {
+					remote: 'email already taken'
+				}
+			}
+		});
+
+		/**
+		 * Show password toggle button
+		 */
+		$('#inputPassword').hideShowPassword({
+			show: false,
+			innerToggle: 'focus'
+		});
+	});
+</script>
+{% endblock %}
+
+{%block body %}
+
+	<h1>SignUp</h1>
+
+	{% if user.errors is not empty %}
+	<p>Errors:</p>
+	<ul>
+		{% for error in user.errors %}
+			<li>{{ error }}</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+
+	<form class="" action="/signup/create" method="post" id="formSignup" >
+		<div class="form-group">
+			<label for="inputName">Name</label>
+			<input class="form-control" id="inputName" type="text" name="name" placeholder="Name" value="{{ user.name }}" autofocus required />
+		</div>
+		<div class="form-group">
+			<label for="inputEmail">Email</label>
+			<input class="form-control" id="inputEmail" type="email" name="email" placeholder="Email address" value="{{ user.email }}" required />
+		</div>
+		<div class="form-group">
+			<label for="inputPassword">Password</label>
+			<input class="form-control" id="inputPassword" type="password" name="password" placeholder="Password" required />
+		</div>
+		<button type="submit" name="button" class="btn btn-default">Sign up</button>
+	</form>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{%block body %}
+
+	<h1>Welcome</h1>
+	{% if current_user %}
+		<p>Hello from a Twig template, {{ current_user.name }}!</p>
+	{% else %}
+		<p>Hello from a Twig template, stranger!</p>
+	{% endif %}
+	<ul>
+		{% for colour in colours %}
+			<li>{{ colour }}</li>
+		{% endfor %}
+	</ul>
+
+{% endblock %}
