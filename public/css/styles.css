@@ -1,5 +1,53 @@
+:root {
+  --primary: rgba(0, 214, 170, .95);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 body {
-	margin-top: 3em;
+	display: grid;
+	grid-template-areas: 	"header header header"
+							"left body right"
+							"footer footer footer";
+	grid-template-columns: 15% 1fr 15%;
+	grid-column-gap: 10px;
+	grid-row-gap: 10px;
+	height: 100vh;
+	margin: 0;
+	font-family: 'Poppins', sans-serif;
+	font-weight: 400;
+}
+
+a {
+	text-decoration: none;
+}
+
+#header {
+	grid-area: header;
+	position: sticky;
+	top: 0;
+}
+
+#left {
+	grid-area: left;
+	background-color: yellow;
+}
+
+#body {
+	grid-area: body;
+	background-color: yellow;
+}
+
+#right {
+	grid-area: right;
+	background-color: yellow;
+}
+
+#footer {
+	grid-area: footer;
+	background-color: yellow;
 }
 
 .alert {
@@ -18,3 +66,104 @@ body {
 .alert-warning {
 	background-color: #fcf8e3;
 }
+
+/*
+	Snapshot
+ */
+.container {
+	text-align: center;
+}
+
+.video-container {
+	width: 500px;
+	height: 375px;
+	background-color: black;
+	display: inline-block;
+	text-align: center;
+}
+
+#canvas {
+	display: none;
+}
+
+
+#photos img {
+	width: 500px;
+	border: 3px white solid;
+	text-align: center;
+}
+
+.bottom-container {
+	width: 500px;
+	height: 375px;
+}
+
+/*
+	Navbar
+ */
+ header {
+	background: var(--primary);
+	text-align: center;
+	position: fixed;
+	z-index: 999;
+	width: 100%;
+     display: grid;
+     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	 align-items: center;
+   }
+
+   .logo {
+     grid-column: 1 / 2;
+   }
+
+   .logo a {
+	   color: white;
+	   text-transform: uppercase;
+   }
+
+   nav {
+     grid-column: 3 / 6;
+     display: flex;
+     justify-content: flex-end;
+     align-items: center;
+   }
+
+   nav ul {
+     display: grid;
+	 margin-right: 20px;
+	 grid-auto-flow: column;
+   }
+
+   nav li {
+     margin-left: 3em;
+     margin-bottom: 0;
+	 list-style: none;
+   }
+
+   nav a {
+     opacity: 1;
+     position: relative;
+	 text-decoration: none;
+	 color: white;
+   }
+
+   nav a:hover {
+     color: black;
+   }
+
+   nav a::before {
+     content: '';
+     display: block;
+     height: 5px;
+     background: black;
+     position: absolute;
+     top: -.75em;
+     left: 0;
+     right: 0;
+     transform: scale(0, 1);
+     transition: transform ease-in-out 250ms;
+   }
+
+   nav a:hover::before {
+     transform: scale(1,1);
+   }

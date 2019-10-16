@@ -26,7 +26,8 @@ class Items extends Authenticated
 	 *
 	 * @return void
 	 */
-	public function showAction() {
+	public function showAction()
+	{
 		echo "Show Action";
 	}
 
@@ -35,7 +36,8 @@ class Items extends Authenticated
 	 *
 	 * @return void
 	 */
-	public function newAction() {
+	public function newAction()
+	{
 		echo "new Action";
 	}
 }

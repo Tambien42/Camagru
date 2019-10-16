@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="UTF-8">
-	<title>{% block title %}{% endblock %}</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<link rel="stylesheet" href="/css/styles.css">
-</head>
-<body>
-	<div class="container">
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
-				<ul class="nav navbar-nav">
-					<li><a href="/">Home</a></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
+	<head>
+		<meta charset="UTF-8">
+		<title>{% block title %}{% endblock %}</title>
+		<link rel="stylesheet" href="/css/styles.css">
+		<link rel="stylesheet" href="/css/normalize.css">
+		<style>{% block style %}{% endblock %}</style>
+	</head>
+	<body>
+		<header id="header">
+			<h1 class="logo"><a href="/">Camagru</a></h1>
+			<nav>
+				<ul class="">
+					<li><a href="/gallery/index">Gallery</a></li>
 					{% if current_user %}
 						<li><a href="/posts/index">Posts</a></li>
 						<li><a href="/settings/show">Settings</a></li>
@@ -23,8 +22,8 @@
 						<li><a href="/login">LogIn</a></li>
 					{% endif %}
 				</ul>
-			</div>
-		</nav>
+			</nav>
+		</header>
 
 		{% for message in flash_messages %}
 			<div class="alert alert-{{ message.type }}">
@@ -32,13 +31,33 @@
 			</div>
 		{% endfor %}
 
-		{% block body %}
-		{% endblock %}
+		<div id="left">
+			{% block left %}
+			{% endblock %}
+		</div>
+
+		<div id="body">
+			{% block body %}
+			{% endblock %}
+		</div>
+
+		<div id="right">
+			{% block right %}
+			{% endblock %}
+		</div>
+
+		<footer id="footer">
+			<p>Copyright &copy; fchuc.</p>
+		</footer>
 
 		<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.js"></script>
+		<script src="bonus/libraries/p5.min.js" type="text/javascript"></script>
+		<script src="bonus/libraries/p5.dom.min.js" type="text/javascript"></script>
+		<script src="bonus/libraries/clmtrackr.js" type="text/javascript"></script>
+		<script src="bonus/libraries/model_pca_20_svm.js" type="text/javascript"></script>
+		<script src="js/sketch.js" type="text/javascript"></script>
 		{% block validate %}
 		{% endblock %}
-	</div>
-</body>
+	</body>
 </html>

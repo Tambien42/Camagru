@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Bonus{% endblock %}
+{% block style %}
+	html, body {
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		padding: 0;
+		margin: 0;
+		font-family: "HelveticaNeue-Light",
+		"Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans- serif;
+		font-weight: 300; -webkit-font-smoothing: antialiased;
+	}
+	video {
+		display: block;
+		width: 100% !important; height: auto !important; vertical-align: top;
+	}
+	canvas {
+		display: block;
+		width: 100% !important; height: auto !important; vertical-align: top;
+	}
+	#logo {
+		position: absolute; z-index: 1000;
+	}
+	#logo img {
+		width: 310px;
+	}
+	#inst {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		z-index:
+		padding:
+		background: rgba(0, 0, 0, 0.6); color: #fff;
+	}
+{% endblock %}
+
+{%block body %}
+
+	<h1>Gallery</h1>
+	<p>All Photo Here.</p>
+
+	<div id="logo">
+		<img src="img/logo.png" alt="Photo Boom Web Studio">
+	</div>
+	<div id="inst">
+		Use left and right arrow key to change prop<br>
+		Press S to save the screen
+	</div>
+
+{% endblock %}
